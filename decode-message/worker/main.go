@@ -9,13 +9,13 @@ import (
 )
 
 func main() {
-	c, err := client.Dial(client.Options{})
+	temporal, err := client.Dial(client.Options{})
 	if err != nil {
 		log.Fatalln("Unable to create client", err)
 	}
-	defer c.Close()
+	defer temporal.Close()
 
-	w := worker.New(c, "decode-message", worker.Options{})
+	w := worker.New(temporal, decodeMessage.TaskQueueName, worker.Options{})
 
 	w.RegisterWorkflow(decodeMessage.Workflow)
 	w.RegisterActivity(decodeMessage.DecodeMessage)
