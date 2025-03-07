@@ -8,3 +8,5 @@ go run decode-message/worker/main.go
 ```
 go run decode-message/starter/main.go -i YmFuYW5h,YmFuYW5hCg==
 ```
+4) Run the following command to query the example
+go run decode-message/start/main.go -r <RunID>
